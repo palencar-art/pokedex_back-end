@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <title>abazinha fofas</title>
+</head>
+
+<body>
+    <h1>Pokedex</h1>
+    <form action="http://localhost:8080/cartas/nova" method="post"> 
+
+        <label> nome</label>
+        <input type="text" name="nome" id="nome">
+
+        <label> expansão</label>
+        <input type="text" name="expansao" id="expansao">
+
+        <label> hp</label>
+        <input type="number" name="hp" id="hp">
+
+
+
+
+        <button type="submit"> Enviar</button>
+    </form>
+    
+
+    <form id="formulario">
+        <label>Buscar:</label>
+        <input type="number" name="id" id="">
+        <button type="submit">Achar</button>
+    </form>
+    
+    <script>
+        const formulario = document.getElementById('formulario')
+        formulario.addEventListener('submit', function(event){
+            event.preventDefault() 
+            fetch ('http://localhost:8080/cartas')
+            .then(res => res.json()
+            .then(dados => {
+                console.log("Dados adicionados ao servidor, e eles são", dados)
+            }))
+        })
+        .catch(erro =>{console.error("DEU ERRO", erro)})
+
+    </script>
+</body>
+
+
+
+</html>
